@@ -1,0 +1,22 @@
+# HTID:11311724: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:11311724:
+
+#Abilitar reglas de reescritura
+RewriteEngine On
+
+# www.dominio.com/controlador/vista/parametro
+# www.dominio.com/index.php?qs=controlador/vista/parametro
+
+# es in directorio o un archivo
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule ^([^?]+)$ index.php?qs=$1 [L,QSA]
+
+# Solo habilito poder hacer get y post
+ <LimitExcept GET POST>
+ 	Order Allow,Deny
+ 	Deny from all
+ </LimitExcept>

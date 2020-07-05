@@ -1,0 +1,12 @@
+label.error{
+    color:red;
+    font-weight: normal;
+}
+input.error{
+    background-color: #fff0f4;
+    border: 1px solid red;
+}
+
+.swal2-popup {
+    font-size: 1.4rem !important;
+}
