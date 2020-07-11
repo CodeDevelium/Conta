@@ -65,7 +65,7 @@ class TextAreaUIElement extends BaseUIElement implements IUIElement
      */
     public function set_validacion_obligatorio()
     {
-        $this->tags_html .= ' data-rule-required="true" data-msg-required="'._t('Valor obligatorio').'"';
+        $this->tags_html .= ' data-rule-required="true" data-msg-required="Valor obligatorio"';
         return $this;
     }
 

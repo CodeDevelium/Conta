@@ -9,8 +9,6 @@
 
 namespace App\Librerias\UI;
 
-use App\Librerias\Str;
-
 /**
  * Class BaseUIElement
  * @package App\Controladores
@@ -51,6 +49,18 @@ class BaseUIElement
     public function set_style($texto_style)
     {
         $this->style .= ' '.$texto_style.';';
+        return $this;
+    }
+
+
+    /**
+     * Añade  un tag
+     * @param $tag
+     * @param $tag_value
+     * @return $this
+     */
+    public function set_tag($tag, $tag_value){
+        $this->tags_html .= " {$tag}=\"{$tag_value}\"";
         return $this;
     }
 
@@ -153,9 +163,10 @@ class BaseUIElement
 
         if ($this->titulo_asignado) {
 
-            $str_ini         = "title='";
-            $str_fin         = "'";
-            $this->tags_html = Str::get_middle_str_str($this->tags_html, $texto_alternativo, $str_ini, $str_fin);
+            $str_ini = "title='";
+            $str_fin = "'";
+            alert("pendeiente BaseUIElement set_titulo");
+            //$this->tags_html = Str::get_middle_str_str($this->tags_html, $texto_alternativo, $str_ini, $str_fin);
         } else {
             $this->tags_html .= " title='{$texto_alternativo}'";
         }
@@ -163,6 +174,47 @@ class BaseUIElement
         $this->titulo_asignado = true;
         return $this;
     }
+
+    /**
+     * Tamaño mini (XS)
+     * @return $this
+     */
+    public function set_size_xs()
+    {
+        $this->class_name .= ' btn-xs';
+        return $this;
+    }
+
+    /**
+     * Color verde (Success)
+     * @return $this
+     */
+    public function set_color_verde()
+    {
+        $this->class_name .= ' btn-success';
+        return $this;
+    }
+
+    /**
+     * Color rojo (Danger)
+     * @return $this
+     */
+    public function set_color_rojo()
+    {
+        $this->class_name .= ' btn-danger';
+        return $this;
+    }
+
+    /**
+     * Color naranja (Warning)
+     * @return $this
+     */
+    public function set_color_naranja()
+    {
+        $this->class_name .= ' btn-warning';
+        return $this;
+    }
+
 
     /**
      * Devuevle el html_tag y class_name
@@ -201,6 +253,7 @@ class BaseUIElement
      */
     protected function sanitize($texto)
     {
-        return str_replace(array("'", '"', '<', '>'), array('&#39;', '&#34;', '&#60;', '&#62;'), $texto);
+        return htmlspecialchars($texto);
+        //return str_replace(array("'", '"', '<', '>'), array('&#39;', '&#34;', '&#60;', '&#62;'), $texto);
     }
 }

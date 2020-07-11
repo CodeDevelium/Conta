@@ -9,7 +9,7 @@
 namespace App;
 
 use App\Librerias\Session;
-use App\Librerias\Valid;
+use App\Librerias\Validate;
 
 /**
  * Class SessionAdmin
@@ -59,7 +59,7 @@ class SessionAdmin
      * @return bool
      */
     public function read_usuario_logeado(){
-        return !Valid::is_empty(Session::get_str('_NOMBRE_USUARIO_')) ;
+        return !Validate::is_empty(Session::get_str('_NOMBRE_USUARIO_')) ;
     }
 
     /**
@@ -76,6 +76,24 @@ class SessionAdmin
     public function read_error_texto(){
         $str = Session::get_value('_ERROR_TEXTO_');
         Session::delete('_ERROR_TEXTO_');
+        return $str;
+    }
+
+    /**
+     * Guarda un ok para ser mostrado al usuario
+     *
+     * @param $ok_texto
+     */
+    public function save_ok_texto($ok_texto){
+        Session::set_value('_OK_TEXTO_', $ok_texto);
+    }
+
+    /**
+     * Devuelve un ok para ser mostrado al usuario
+     */
+    public function read_ok_texto(){
+        $str = Session::get_value('_OK_TEXTO_');
+        Session::delete('_OK_TEXTO_');
         return $str;
     }
 

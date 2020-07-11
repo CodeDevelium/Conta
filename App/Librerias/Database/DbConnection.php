@@ -96,7 +96,7 @@ class DbConnection
         try{
             // El stmt no puede ser una variable de Database, ya que al ser singleton no podríamos ejecutar
             // dos sentencias SQL a la vez
-            $stmt = self::$hCnn->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+            $stmt = self::$hCnn->prepare($query); //, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
             if (empty($array_bind)) {
                 $stmt->execute();
             } else {

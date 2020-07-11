@@ -9,7 +9,9 @@
 namespace App;
 
 
-use App\Entidades\Base\FactoriaEntidades;
+use App\Entidades\FactoriaEntidades;
+use App\Librerias\Database\Sql\FactoriaSql;
+use App\Librerias\UI\FactoriaUI;
 use App\Repositorios\FactoriaRepositorios;
 
 /**
@@ -53,6 +55,22 @@ abstract class Factory
     public static function Session($session_id = null)
     {
         return new SessionAdmin($session_id);
+    }
+
+    /**
+     * Form
+     * @return FactoriaSql
+     */
+    public static function Sql(){
+        return new FactoriaSql();
+    }
+
+    /**
+     * Form
+     * @return FactoriaUI
+     */
+    public static function UI(){
+        return new FactoriaUI();
     }
 
     /**

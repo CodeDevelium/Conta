@@ -15,7 +15,7 @@ use Exception;
  * Class BaseRepositorio
  * @package App\Controladores
  */
-class BaseRepositorio extends DbConnection
+class BaseRepositorio
 {
 
     /**
@@ -24,8 +24,6 @@ class BaseRepositorio extends DbConnection
      */
     public function __construct()
     {
-        parent::__construct();
-        $this->open_conection();
 
     }
 

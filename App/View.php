@@ -17,6 +17,11 @@ use App\Librerias\Log;
 class View
 {
     /**
+     * @var string
+     */
+    private $file_js;
+
+    /**
      * View constructor.
      */
     public function __construct()
@@ -26,24 +31,26 @@ class View
     /**
      * Renderiza (Muestra) los datos
      *
-     * @param string    $vista
+     * @param string $vista
+     * @param null   $datos
      */
-    public function render($vista)
+    public function render($vista, $datos = null)
     {
 
         if ('/' == $vista[ 0 ]) {
             $vista = substr($vista, 1);
         }
 
+        $this->file_js = "/scripts/Base/{$vista}.js";
         $contenido = "../App/Vistas/Base/{$vista}.php";
         if (!file_exists($contenido)) {
             $contenido = "../App/Vistas/{$vista}.php";
+            $this->file_js = "/scripts/{$vista}.js";
         }
         if (!file_exists($contenido)) {
             Log::save_error('No exista la viata: '.$contenido);
             return;
         }
-
 
         require_once '../App/Vistas/header.php';
         require_once '../App/Vistas/menu.php';
@@ -52,6 +59,14 @@ class View
 
         $this->mostrar_mensajes();
 
+    }
+
+    /**
+     * Devuevle el path al archivo js
+     * @return string
+     */
+    public function get_file_js(){
+        return $this->file_js;
     }
 
     /**
@@ -92,6 +107,10 @@ class View
         $error = App::$Session->read_error_texto();
         if (!empty($error)) {
                $this->alert_error($error);
+        }
+        $ok = App::$Session->read_ok_texto();
+        if (!empty($ok)) {
+            $this->alert_ok($ok);
         }
     }
 

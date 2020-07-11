@@ -28,12 +28,12 @@ abstract class Post
     public static function get_array($clave)
     {
         $array_tmp = filter_input(INPUT_POST, $clave, FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-        if (Valid::is_empty($array_tmp)) {
+        if (Validate::is_empty($array_tmp)) {
 
             /* Puede que sólo haya un valor, con lo que no es un array */
             $tmp = filter_input(INPUT_POST, $clave);
 
-            if (Valid::is_empty($tmp)) {
+            if (Validate::is_empty($tmp)) {
                 return [];
             }
 

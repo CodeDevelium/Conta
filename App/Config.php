@@ -43,9 +43,9 @@ class Config  // La configuración no es una entidad que se guarda en al BD
      */
     public function __construct()
     {
-        $this->app_nombre      = 'Simple System';
-        $this->app_titulo      = 'Simple System';
-        $this->app_descripcion = 'Sistema simple de dos capas sin usaurios';
+        $this->app_nombre      = 'Conta Conta';
+        $this->app_titulo      = 'Simple contabilidad';
+        $this->app_descripcion = 'Simple contabilidad';
         $this->app_autor       = 'Code Develium';
 
         // Siempre que tengamos una apliación Web (Apache)
@@ -75,7 +75,7 @@ class Config  // La configuración no es una entidad que se guarda en al BD
             $this->servidor_db_host    = '127.0.0.1';
             $this->servidor_db_usuario = 'root';
             $this->servidor_db_psw     = '';
-            $this->servidor_db_name    = 'pos';
+            $this->servidor_db_name    = 'conta';
             $this->servidor_db_port    = 3306;
         }
     }

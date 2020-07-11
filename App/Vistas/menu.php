@@ -13,8 +13,8 @@
                 </a>
             </li>
             <li>
-                <a href="/">
-                    <i class="fa fa-user"></i> <span>Usuarios</span>
+                <a href="/Banco/index">
+                    <i class="fa fa-bank"></i> <span>Bancos</span>
                 </a>
             </li>
             <li>

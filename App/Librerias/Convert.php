@@ -28,7 +28,7 @@ abstract class Convert
     {
         if (is_array($element)) {
             return $element;
-        } elseif (Valid::is_empty($element)) {
+        } elseif (Validate::is_empty($element)) {
             return [];
         } elseif (is_object($element)) {
             return ( array )$element;
@@ -50,13 +50,13 @@ abstract class Convert
     public static function to_bool($str_bool)
     {
         $ret = -1;
-        if (Valid::is_empty($str_bool)) {
+        if (Validate::is_empty($str_bool)) {
             $ret = null;
         } else {
             if (is_string($str_bool)) {
                 $name = strtolower(strtr($str_bool, 'ÍÓíó', 'ioio'));
 
-                $sn = preg_replace('/^[:alnum:]/ui', '', strtoupper(trim($name)));
+                $sn = preg_replace('/[^\da-z]/i', '', strtoupper(trim($name)));
                 if ($sn == 'S' || $sn == 'Y' || $sn == 'SI' || $sn == 'YES' || $sn == '1') {
                     $ret = true;
                 } else {
@@ -99,7 +99,7 @@ abstract class Convert
      */
     function convert_to_html($txt)
     {
-        if (Valid::is_empty($txt)) {
+        if (Validate::is_empty($txt)) {
             return '&nbsp;';
         }
 

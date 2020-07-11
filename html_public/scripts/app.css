@@ -10,3 +10,9 @@ input.error{
 .swal2-popup {
     font-size: 1.4rem !important;
 }
+body{
+    font-size: 1.6em;
+}
+.loading{
+    width: 80px;
+}

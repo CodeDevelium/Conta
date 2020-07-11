@@ -6,7 +6,7 @@
  * @since       24/06/2020
  */
 
-namespace App\Entidades\Base;
+namespace App\Entidades;
 
 /**
  * Class FactoriaEntidades
@@ -19,6 +19,18 @@ class FactoriaEntidades
      */
     public function __construct()
     {
+    }
+
+    /**
+     * Banco
+     *
+     * @param array|null $array_valores
+     *
+     * @return Banco
+     */
+    public function Banco($array_valores = null)
+    {
+        return (new Banco($array_valores));
     }
 
 }

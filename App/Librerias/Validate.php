@@ -14,7 +14,7 @@ namespace App\Librerias;
  *
  * @package App\Librerias
  */
-abstract class Valid
+abstract class Validate
 {
 
     /**

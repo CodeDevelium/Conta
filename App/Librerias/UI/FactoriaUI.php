@@ -9,7 +9,7 @@
 
 namespace App\Librerias\UI;
 
-use App\Librerias\Valid;
+use App\Librerias\Validate;
 
 
 /**
@@ -27,6 +27,7 @@ class FactoriaUI
 
     /**
      * Link
+     *
      * @param      $txt
      * @param bool $sanitize
      *
@@ -35,6 +36,17 @@ class FactoriaUI
     public function Link($txt, $sanitize = true)
     {
         return new LinkUIElement($txt, $sanitize);
+    }
+
+    /**
+     * @param $valor
+     * @param $texto_radio
+     *
+     * @return RadioButtonUIElement
+     */
+    public function Radio_button($valor, $texto_radio)
+    {
+        return new RadioButtonUIElement($valor, $texto_radio);
     }
 
     /**
@@ -93,11 +105,11 @@ class FactoriaUI
      */
     public function Post_begin(string $href, $className = null)
     {
-//        $token_seguridad  = App::$Seguridad->get_new_token($token_seguridad_orden);
-//        $token_input_name = App::$Seguridad->get_token_form();
-//
-//        $hidden_token = Factory::UI()->Input_hidden($token_seguridad)
-//                               ->set_id_name($token_input_name)->to_html();
+        //        $token_seguridad  = App::$Seguridad->get_new_token($token_seguridad_orden);
+        //        $token_input_name = App::$Seguridad->get_token_form();
+        //
+        //        $hidden_token = Factory::UI()->Input_hidden($token_seguridad)
+        //                               ->set_id_name($token_input_name)->to_html();
 
         $hidden_token = '';
         return "<form class='form-horizontal {$className}' method='post' action='{$href}'>".$hidden_token;
@@ -123,6 +135,11 @@ class FactoriaUI
         return new LabelUIElement($texto);
     }
 
+    public function Label_error($id_target)
+    {
+        return new LabelErrorUIElement($id_target);
+    }
+
 
     /**
      * @param null $textoEditar
@@ -131,7 +148,7 @@ class FactoriaUI
      */
     public function Button_editar($textoEditar = null)
     {
-        if (Valid::is_empty($textoEditar)) {
+        if (Validate::is_empty($textoEditar)) {
             $textoEditar = 'Editar';
         }
 
@@ -147,7 +164,7 @@ class FactoriaUI
      */
     public function Button_eliminar($textoEliminar = null)
     {
-        if (Valid::is_empty($textoEliminar)) {
+        if (Validate::is_empty($textoEliminar)) {
             $textoEliminar = 'Eliminar';
         }
 
@@ -163,7 +180,7 @@ class FactoriaUI
      */
     public function Button_consultar($textoConsultar = null)
     {
-        if (Valid::is_empty($textoConsultar)) {
+        if (Validate::is_empty($textoConsultar)) {
             $textoConsultar = 'Consultar';
         }
 
@@ -179,7 +196,7 @@ class FactoriaUI
      */
     public function Button_volver($textoVolver = null)
     {
-        if (Valid::is_empty($textoVolver)) {
+        if (Validate::is_empty($textoVolver)) {
             $textoVolver = 'Volver';
         }
 
@@ -195,7 +212,7 @@ class FactoriaUI
      */
     public function Button_cancelar($textoCancelar = null)
     {
-        if (Valid::is_empty($textoCancelar)) {
+        if (Validate::is_empty($textoCancelar)) {
             $textoCancelar = 'Cancelar';
         }
 
@@ -211,7 +228,7 @@ class FactoriaUI
      */
     public function Button_guardar($textoGuardar = null)
     {
-        if (Valid::is_empty($textoGuardar)) {
+        if (Validate::is_empty($textoGuardar)) {
             $textoGuardar = 'Guardar';
         }
 
@@ -234,6 +251,17 @@ class FactoriaUI
     /**
      * @param null $texto
      *
+     * @return ButtonUIElement
+     */
+    public function Button_simple($texto)
+    {
+        return new ButtonUIElement($texto);
+    }
+
+
+    /**
+     * @param null $texto
+     *
      * @return ButtonLinkUIElement
      */
     public function Button_simple_link($texto)
@@ -248,7 +276,7 @@ class FactoriaUI
      */
     public function Button_nuevo($textoNuevo = null)
     {
-        if (Valid::is_empty($textoNuevo)) {
+        if (Validate::is_empty($textoNuevo)) {
             $textoNuevo = 'Nuevo';
         }
 

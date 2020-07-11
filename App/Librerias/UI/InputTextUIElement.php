@@ -70,14 +70,15 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
     public function is_date()
     {
         $this->is_date = true;
+        alert("pendiente");
 
-        $formato_fecha = App::$Config->get_formato_fecha_actual();
-        $pattern       = App::$Config->get_pattern_fecha_actual();
-        $error         = _t('Formato de fecha incorrecto')." ($formato_fecha)";
-
-        $this->set_place_holder($formato_fecha);
-        $this->set_validacion_min_length(10, $error);
-        $this->set_max_length(10);
+//        $formato_fecha = App::$Config->get_formato_fecha_actual();
+//        $pattern       = App::$Config->get_pattern_fecha_actual();
+//        $error         = 'Formato de fecha incorrecto: '.($formato_fecha);
+//
+//        $this->set_place_holder($formato_fecha);
+//        $this->set_validacion_min_length(10, $error);
+//        $this->set_max_length(10);
 
         $this->tags_html .= ' data-rule-pattern="'.$pattern.'" data-msg-pattern="'.$error.'" ';
         return $this;
@@ -89,14 +90,15 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
      */
     public function is_date_time()
     {
+        alert('Pendiente');
         //$this->tags_html = str_replace('type="text"', 'type="datetime-local"', $this->tags_html);
         $this->is_datetime = true;
-        $formato_fecha     = App::$Config->get_formato_fecha_actual().' hh:mm:ss';
-        $pattern           = App::$Config->get_pattern_fecha_actual();
-        $error             = _t('Formato de fecha incorrecto')." ($formato_fecha)";
-        $this->set_place_holder($formato_fecha);
-        $this->set_validacion_min_length(19, $error);
-        $this->set_max_length(19);
+//        $formato_fecha     = App::$Config->get_formato_fecha_actual().' hh:mm:ss';
+//        $pattern           = App::$Config->get_pattern_fecha_actual();
+//        $error             = _t('Formato de fecha incorrecto')." ($formato_fecha)";
+//        $this->set_place_holder($formato_fecha);
+//        $this->set_validacion_min_length(19, $error);
+//        $this->set_max_length(19);
         $this->tags_html .= ' data-rule-pattern="'.$pattern.' \d{2}:\d{2}:\d{2}" data-msg-pattern="'.$error.'" ';
         return $this;
     }
@@ -144,7 +146,7 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
     public function set_max_length($num)
     {
         $this->tags_html .= ' maxlength="'.$num.'"';
-        $this->tags_html .= ' data-rule-maxlength="'.$num.'" data-msg-maxlength="'._t('el valor no puede tener más de %1 caracteres', $num).'"';
+        $this->tags_html .= ' data-rule-maxlength="'.$num.'" data-msg-maxlength="Máximo '.$num.' caracteres"';
         return $this;
     }
 
@@ -155,7 +157,7 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
      */
     public function set_validacion_obligatorio()
     {
-        $this->tags_html .= ' data-rule-required="true" data-msg-required="'._t('Valor obligatorio').'"';
+        $this->tags_html .= ' data-rule-required="true" data-msg-required="Valor obligatorio"';
         return $this;
     }
 

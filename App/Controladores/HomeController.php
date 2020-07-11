@@ -8,7 +8,6 @@
 namespace App\Controladores;
 
 use App\App;
-use App\Controladores\Base\BaseController;
 use App\Librerias\Post;
 
 /**

@@ -27,7 +27,7 @@ abstract class Dispositivo
     public static function get_detectar_idioma($idioma_default)
     {
         $http_accept = Str::to_lower_case(Server::get_value('HTTP_ACCEPT_LANGUAGE'));
-        if (Valid::is_empty($http_accept)) {
+        if (Validate::is_empty($http_accept)) {
             return $idioma_default;
         }
 
@@ -80,11 +80,11 @@ abstract class Dispositivo
     public static function get_dominio_http_actual()
     {
         $http_host = Server::get_value('HTTP_HOST');
-        if (Valid::is_empty($http_host)) {
+        if (Validate::is_empty($http_host)) {
             return '';
         }
         $https = Server::get_value('HTTPS');
-        if (Valid::is_empty($https)) {
+        if (Validate::is_empty($https)) {
             $protocol = 'http';
         } else {
             $protocol = ($https != "off") ? "https" : "http";
@@ -114,7 +114,7 @@ abstract class Dispositivo
 
             $value = Server::get_value($key);
 
-            if ( ! Valid::is_empty($value)) {
+            if ( ! Validate::is_empty($value)) {
                 foreach (explode(',', $value) as $ip) {
                     $ip = trim($ip);
 

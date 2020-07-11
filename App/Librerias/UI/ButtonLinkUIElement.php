@@ -23,6 +23,11 @@ class ButtonLinkUIElement extends BaseUIElement implements IUIElement
     private $texto_link;
 
     /**
+     * @var string
+     */
+    private $modal;
+
+    /**
      * ButtonLinkElement constructor.
      *
      * @param string $text_link
@@ -30,9 +35,23 @@ class ButtonLinkUIElement extends BaseUIElement implements IUIElement
     public function __construct($text_link)
     {
         parent::__construct();
-        $this->class_name = ' btn ';
+        $this->class_name = ' btn btn-flat';
 
         $this->texto_link = $this->sanitize($text_link);
+        return $this;
+    }
+
+
+    /**
+     * Asigna un icono
+     *
+     * @param $fa_icon
+     *
+     * @return $this
+     */
+    public function set_icon($fa_icon)
+    {
+        $this->texto_link .= "<i class=\"fa {$fa_icon}\"></i>";
         return $this;
     }
 
@@ -47,8 +66,8 @@ class ButtonLinkUIElement extends BaseUIElement implements IUIElement
     {
         $this->class_name .= '  my-pregunta ';
 
-        $texto_pregunta   = $this->sanitize($texto_pregunta);
-        $this->tags_html  .= " data-preg='{$texto_pregunta}'";
+        $texto_pregunta  = $this->sanitize($texto_pregunta);
+        $this->tags_html .= " data-preg='{$texto_pregunta}'";
 
         return $this;
     }
@@ -65,11 +84,11 @@ class ButtonLinkUIElement extends BaseUIElement implements IUIElement
     public function set_href($url, $parametro = null, $token = null)
     {
         if (!empty($parametro)) {
-            if(  $parametro[0] != '/'){
+            if ($parametro[ 0 ] != '/') {
                 $url .= '/';
             }
             $parametro = Encriptador::get_valor_encriptado($parametro);
-            $url .= $parametro;
+            $url       .= $parametro;
         }
         if (!empty($token)) {
             $url = $url.'/'.$token; //.Url::parametroEncriptar($token);
@@ -122,13 +141,37 @@ class ButtonLinkUIElement extends BaseUIElement implements IUIElement
     }
 
     /**
+     * Modal
+     *
+     * @param $id
+     *
+     * @return ButtonLinkUIElement
+     */
+    public function set_modal_abrir($id)
+    {
+        $this->modal = " data-toggle=\"modal\" data-target=\"{$id}\"";
+        return $this;
+    }
+
+    /**
+     * Cierra una modal
+     * @return $this
+     */
+    public function set_modal_cerrar()
+    {
+        $this->modal = "  data-dismiss=\"modal\"";
+        return $this;
+    }
+
+
+    /**
      * Devuelve el tag html como un string
      * @return string
      */
     public function __toString()
     {
         $html = parent::__toString();
-        return "<a {$html}>{$this->texto_link}</a>&nbsp;";
+        return "<a {$html}{$this->modal}>{$this->texto_link}</a>&nbsp;";
     }
 
 }

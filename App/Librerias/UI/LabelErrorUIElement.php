@@ -28,7 +28,7 @@ class LabelErrorUIElement extends BaseUIElement implements IUIElement
     public function __construct($id_target)
     {
         parent::__construct();
-        $this->$id_target = $$id_target;
+        $this->id_target = $id_target;
     }
 
     /**

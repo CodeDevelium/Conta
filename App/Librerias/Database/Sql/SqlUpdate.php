@@ -63,7 +63,12 @@ class SqlUpdate extends BaseWhere
 
                 $value = addslashes($value);
 
-                $this->query .= $field.'="'.$value.'" ';    // Añado entre comillas dobles
+                if( ':' != $value[0]){
+                    $this->query .= $field.'="'.$value.'" ';    // Añado entre comillas dobles
+                }
+                else{
+                    $this->query .= $field.'='.$value.' ';    // Añado entre comillas dobles
+                }
 
             } elseif (is_bool($value)) {
 

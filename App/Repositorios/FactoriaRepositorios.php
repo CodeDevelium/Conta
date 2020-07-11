@@ -29,4 +29,13 @@ class FactoriaRepositorios
         return new HomeRepositorio();
     }
 
+    /**
+     * Banco
+     * @return BancoRepositorio
+     */
+    public function Banco()
+    {
+        return (new BancoRepositorio());
+    }
+
 }

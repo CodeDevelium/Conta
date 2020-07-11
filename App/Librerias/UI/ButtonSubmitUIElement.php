@@ -29,7 +29,7 @@ class ButtonSubmitUIElement extends BaseUIElement implements IUIElement
     public function __construct($texto_button)
     {
         parent::__construct();
-        $this->class_name   = ' btn ';
+        $this->class_name   = ' btn btn-flat';
 
         $this->texto_button = $texto_button;
         return $this;

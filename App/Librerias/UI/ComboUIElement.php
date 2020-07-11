@@ -46,7 +46,7 @@ class ComboUIElement extends BaseUIElement implements IUIElement
      */
     public function set_validacion_bligatorio()
     {
-        $this->tags_html .= ' data-rule-required="true" data-msg-required="'._t('Valor obligatorio').'"';
+        $this->tags_html .= ' data-rule-required="true" data-msg-required="Valor obligatorio"';
         return $this;
     }
 
@@ -72,8 +72,8 @@ class ComboUIElement extends BaseUIElement implements IUIElement
         }
 
         $arrKeyValues      = array();
-        $arrKeyValues[ 0 ] = ($texto_no === null ? _t("No") : $texto_no);
-        $arrKeyValues[ 1 ] = ($texto_si === null ? _t("Si") : $texto_si);
+        $arrKeyValues[ 0 ] = ($texto_no === null ? "No" : $texto_no);
+        $arrKeyValues[ 1 ] = ($texto_si === null ? "Si" : $texto_si);
 
         foreach ($arrKeyValues as $key => $val) {
             $sel = '';

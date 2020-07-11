@@ -8,7 +8,7 @@
 
 namespace App\Entidades;
 
-use App\Entidades\Base\BaseEntidad;
+use App\Entidades\BaseEntidad;
 
 /**
  * Class Home

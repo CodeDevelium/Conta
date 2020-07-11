@@ -59,7 +59,12 @@ class SqlInsert extends BaseSql
                 //$value = addslashes($value);
                 $value = filter_var($value, FILTER_SANITIZE_STRING);
 
-                $this->query .= $field.'="'.$value.'" ';    // Añado entre comillas dobles
+                if( ':' != $value[0]){
+                    $this->query .= $field.'="'.$value.'" ';    // Añado entre comillas dobles
+                }
+                else{
+                    $this->query .= $field.'='.$value.' ';    // Añado entre comillas dobles
+                }
 
             } elseif (is_bool($value)) {
 
