@@ -18,8 +18,8 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-th"></i> <span>Categorías</span>
+                <a href="<?= \App\Entidades\Tarjeta::ACTION_INDEX ?>">
+                    <i class="fa fa-credit-card"></i> <span>Tarjetas de crédito</span>
                 </a>
             </li>
             <li>

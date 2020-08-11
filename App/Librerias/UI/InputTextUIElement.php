@@ -9,9 +9,6 @@
 
 namespace App\Librerias\UI;
 
-use App\App;
-use App\Helper;
-
 /**
  * Class InputTextElement
  * @package App\Controladores
@@ -67,21 +64,28 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
      * Input tipo Date
      * @return $this
      */
-    public function is_date()
+    public function set_is_date()
     {
         $this->is_date = true;
-        alert("pendiente");
+        $formato_fecha = 'dd/mm/aaaa';
+        $pattern       = "\\d{2}/\\d{2}/\\d{4}";
+        $error         = "Formato de fecha dd/mm/aaaa";
 
-//        $formato_fecha = App::$Config->get_formato_fecha_actual();
-//        $pattern       = App::$Config->get_pattern_fecha_actual();
-//        $error         = 'Formato de fecha incorrecto: '.($formato_fecha);
-//
-//        $this->set_place_holder($formato_fecha);
-//        $this->set_validacion_min_length(10, $error);
-//        $this->set_max_length(10);
-
+        $this->set_place_holder($formato_fecha);
+        $this->set_validacion_min_length(10, $error);
+        $this->set_max_length(10);
+        $this->tags_html .= ' date_format="true" data-msg-date_format="Fecha incorrecta" ';
         $this->tags_html .= ' data-rule-pattern="'.$pattern.'" data-msg-pattern="'.$error.'" ';
         return $this;
+        /*
+        jQuery.validator.addMethod(
+            "date_format",
+            function (value, element) {
+                return Factory.validate_is_date(value);
+            },
+            "Fecha incorrecta"
+        );
+         */
     }
 
     /**
@@ -93,12 +97,16 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
         alert('Pendiente');
         //$this->tags_html = str_replace('type="text"', 'type="datetime-local"', $this->tags_html);
         $this->is_datetime = true;
-//        $formato_fecha     = App::$Config->get_formato_fecha_actual().' hh:mm:ss';
-//        $pattern           = App::$Config->get_pattern_fecha_actual();
-//        $error             = _t('Formato de fecha incorrecto')." ($formato_fecha)";
-//        $this->set_place_holder($formato_fecha);
-//        $this->set_validacion_min_length(19, $error);
-//        $this->set_max_length(19);
+        $formato_fecha     = 'dd/mm/aaaa hh:mm:ss';
+        $pattern           = "\\d{2}/\\d{2}/\\d{4}";
+        $error             = "Formato de fecha dd/mm/aaaa";
+
+        $this->set_place_holder($formato_fecha);
+        $this->set_validacion_min_length(10, $error);
+        $this->set_max_length(10);
+        $this->set_place_holder($formato_fecha);
+        $this->set_validacion_min_length(19, $error);
+        $this->set_max_length(19);
         $this->tags_html .= ' data-rule-pattern="'.$pattern.' \d{2}:\d{2}:\d{2}" data-msg-pattern="'.$error.'" ';
         return $this;
     }
@@ -210,14 +218,14 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
     public function __toString()
     {
         $html = parent::__toString();
-        if ($this->is_date) {
-
-            $this->value = Helper::display_date($this->value);
-
-        } elseif ($this->is_datetime) {
-
-            $this->value = Helper::display_dateTime($this->value);
-        }
+        //        if ($this->is_date) {
+        //
+        //            $this->value = Helper::display_date($this->value);
+        //
+        //        } elseif ($this->is_datetime) {
+        //
+        //            $this->value = Helper::display_dateTime($this->value);
+        //        }
         $html = str_replace('[[VALUE]]', $this->value, $html);
         return "{$html}>";
     }

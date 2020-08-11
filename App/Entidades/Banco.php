@@ -10,7 +10,6 @@
 namespace App\Entidades;
 
 use App\Librerias\MySql;
-use App\Librerias\Post;
 
 /**
  * Class Banco

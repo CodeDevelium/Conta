@@ -49,7 +49,7 @@ class BancoController extends BaseController
         $banco_nombre = Post::get_str('banco_nombre_nuevo');
 
         $Banco = Factory::Entidades()->Banco();
-        $Banco->set_nombre( $banco_nombre);
+        $Banco->set_nombre($banco_nombre);
         $Banco->set_activo(true);
 
         if (!$Banco->datos_entidad_correctos(false)) {

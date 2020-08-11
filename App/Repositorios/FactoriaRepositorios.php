@@ -8,6 +8,8 @@
 
 namespace App\Repositorios;
 
+use Exception;
+
 /**
  * Class FactoriaRepositorios
  * @package App\Controladores
@@ -32,10 +34,21 @@ class FactoriaRepositorios
     /**
      * Banco
      * @return BancoRepositorio
+     * @throws Exception
      */
     public function Banco()
     {
         return (new BancoRepositorio());
+    }
+
+    /**
+     * Tarjeta
+     * @return TarjetaRepositorio
+     * @throws Exception
+     */
+    public function Tarjeta()
+    {
+        return (new TarjetaRepositorio());
     }
 
 }

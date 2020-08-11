@@ -1,8 +1,15 @@
 <?php
 
 use App\Entidades\Banco;
+use App\Entidades\Tarjeta;
 use App\Factory;
 use App\Librerias\Convert;
+
+/**
+ * @var  array $datos
+ */
+$array_tarjeta = $datos[ 'tarjeta' ];
+$array_bancos  = $datos[ 'bancos' ];
 
 $ui = Factory::UI();
 ?>
@@ -11,20 +18,20 @@ $ui = Factory::UI();
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1> Bancos </h1>
+            <h1> Tarjetas de crédito </h1>
             <ol class="breadcrumb">
                 <li><a href="/"><i class="fa fa-dashboard"></i> Inicio</a></li>
-                <li>Bancos</li>
+                <li>Tarjetas de crédito</li>
             </ol>
         </section>
 
         <section class="content">
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-8">
                 <div class="box">
                     <div class="box-header with-border">
                         <?= $ui->Button_nuevo()
                                ->set_primario()
-                               ->set_modal_abrir('#modal_nuevo_banco')
+                               ->set_modal_abrir('#modal_nueva_tarjeta')
                         ?>
                         <div class="box-body">
 
@@ -33,7 +40,9 @@ $ui = Factory::UI();
                                 <tr>
                                     <th style="width:10px">#</th>
                                     <th>Nombre</th>
-                                    <th style="width: 100px">Activo</th>
+                                    <th>Banco</th>
+                                    <th style="width: 80px">Caduca</th>
+                                    <th style="width: 80px">Activo</th>
                                     <th style="width: 40px">Acciones</th>
                                 </tr>
                                 </thead>
@@ -43,30 +52,30 @@ $ui = Factory::UI();
                                 /**
                                  * @var array $datos
                                  */
-                                foreach ($datos as $array_banco) {
+                                foreach ($array_tarjeta as $tarjeta) {
 
-                                    $id = $array_banco[ Banco::FIELD_ID ];
+                                    $id = $tarjeta[ Tarjeta::FIELD_ID ];
 
-                                    $activado = Convert::to_bool($array_banco[ Banco::FIELD_ACTIVO ]);
+                                    $activada = Convert::to_bool($tarjeta[ Tarjeta::FIELD_ACTIVA ]);
 
-                                    if ($activado) {
-                                        $btnActivado = $ui->Button_simple('Activado')
+                                    if ($activada) {
+                                        $btnActivada = $ui->Button_simple('Activada')
                                                           ->set_color_verde()
-                                                          ->set_titulo('Banco activado')
+                                                          ->set_titulo('Tarjeta activda')
                                                           ->set_size_xs();
                                     } else {
-                                        $btnActivado = $ui->Button_simple('Desactivado')
+                                        $btnActivada = $ui->Button_simple('Desactivada')
                                                           ->set_size_xs()
-                                                          ->set_titulo('Banco desactivado')
+                                                          ->set_titulo('Tarjeta desactivada')
                                                           ->set_color_rojo();
                                     }
                                     $btnEditar = $ui->Button_simple_link('')
                                                     ->set_color_naranja()
-                                                    ->set_modal_abrir('#modal_editar_banco')
+                                                    ->set_modal_abrir('#modal_editar_tarjeta')
                                                     ->set_icon('fa-pencil')
                                                     ->set_titulo('Modificar')
                                                     ->set_size_xs()
-                                                    ->set_class_name('btnEditarBanco')
+                                                    ->set_class_name('btnEditarTarjeta')
                                                     ->set_tag('data-id', $id);
 
                                     $btnEliminar = $ui->Button_simple('')
@@ -74,14 +83,16 @@ $ui = Factory::UI();
                                                       ->set_icon('fa-times')
                                                       ->set_titulo('Eliminar')
                                                       ->set_size_xs()
-                                                      ->set_class_name('btnEliminarBanco')
+                                                      ->set_class_name('btnEliminarTarjeta')
                                                       ->set_tag('data-id', $id);
 
                                     ?>
                                     <tr>
-                                        <td><?= $array_banco[ Banco::FIELD_ID ] ?></td>
-                                        <td class='banco_"<?= $id ?>'><?= $array_banco[ Banco::FIELD_NOMBRE ] ?></td>
-                                        <td> <?= $btnActivado ?></td>
+                                        <td><?= $tarjeta[ Tarjeta::FIELD_ID ] ?></td>
+                                        <td class='tarjeta_<?= $id ?>'><?= $tarjeta[ Tarjeta::FIELD_NOMBRE ] ?></td>
+                                        <td><?= $tarjeta[ Banco::FIELD_NOMBRE ] ?></td>
+                                        <td><?= Convert::to_date_std($tarjeta[ Tarjeta::FIELD_CADUCA ]) ?></td>
+                                        <td> <?= $btnActivada ?></td>
                                         <td>
                                             <div class="btn-group">
                                                 <?= $btnEditar ?>
@@ -95,8 +106,6 @@ $ui = Factory::UI();
                                 </tbody>
 
                             </table>
-
-
                         </div>
                     </div>
                 </div>
@@ -104,5 +113,6 @@ $ui = Factory::UI();
     </div>
 
 <?php
+
 include '_nuevo.php';
 include '_editar.php';

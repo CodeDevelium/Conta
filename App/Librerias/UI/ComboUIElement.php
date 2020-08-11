@@ -9,7 +9,6 @@
 
 namespace App\Librerias\UI;
 
-use App\Librerias\Encriptador;
 
 /**
  * Class ComboElement
@@ -110,7 +109,7 @@ class ComboUIElement extends BaseUIElement implements IUIElement
                 if ((''.$this->valor_seleccionado) === (''.$key)) {
                     $sel = 'selected';
                 }
-                $key           = Encriptador::get_valor_encriptado($key);
+                //$key           = Encriptador::get_valor_encriptado($key);
                 $this->options .= '<option '.$sel.' value="'.$key.'">'.$value.'</option>';
             }
         }

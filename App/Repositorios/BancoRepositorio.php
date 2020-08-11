@@ -51,6 +51,47 @@ class BancoRepositorio extends BaseRepositorio
     }
 
     /**
+     * Devuelve todos loos valores
+     * @return array
+     * @throws Exception
+     */
+    public function get_array_activos()
+    {
+        try{
+            $Query = Factory::Sql()->Select(Banco::TABLA);
+
+            $Query->get([Banco::FIELD_ID, Banco::FIELD_NOMBRE])
+                  ->where_equal(Banco::FIELD_ACTIVO, true)
+                  ->order_by(Banco::FIELD_NOMBRE);
+
+            $array_ret = [];
+            for ($n = $Query->execute(); $n > 0; $n--) {
+
+                list($id, $nombre) = $Query->fetch_num();
+                $array_ret[ $id ] = $nombre;
+            }
+
+            return $array_ret;
+
+        } catch (Exception $ex){
+            Log::save_error('Imposible obtener array de bancos activos');
+            return [];
+        }
+    }
+    /*
+        public function array_activos_action()
+        {
+            $RepoBancos   = Factory::Repositorios()->Banco();
+            $array_bancos = $RepoBancos->get_all_activos();
+            $array_ret    = [];
+            foreach ($array_bancos as $banco) {
+                $array_ret[ $array_bancos[ Banco::FIELD_ID ] ] = $array_bancos[ Banco::FIELD_NOMBRE ];
+            }
+            return $array_ret;
+        }
+
+    */
+    /**
      * @param Banco $Banco
      *
      * @return bool
@@ -126,6 +167,7 @@ class BancoRepositorio extends BaseRepositorio
 
     /**
      * Elimina un banco por su ID
+     *
      * @param $banco_id
      *
      * @return bool

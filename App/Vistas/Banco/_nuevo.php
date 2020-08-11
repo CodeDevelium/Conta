@@ -13,7 +13,7 @@ use App\Factory;
 $ui = Factory::UI();
 
 ?>
-<div id="modal_nuevo_banco" class="modal" role="dialog">
+<div id="modal_nuevo_banco" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
 
     <div class="modal-dialog">
 

@@ -22,10 +22,10 @@ $(function () {
     });
 
     // Cada vez que se abre una modal
-     $("div.modal").on('show.bs.modal', function () {
-         Factory.clear_errors();
-         Factory.clear_inputs();
-     });
+    $("div.modal").on('show.bs.modal', function () {
+        Factory.clear_errors();
+        Factory.clear_inputs();
+    });
 
     $(".grid").DataTable({
 
@@ -57,6 +57,8 @@ $(function () {
         }
 
     });
+
+
 });
 
 
@@ -64,6 +66,36 @@ let Factory = (function () {
 
     /* Public */
     return {
+
+        validate_is_date: function (fecha) {
+            if (!fecha) {
+                return false;
+            }
+            var sdate = null;
+            var indate = fecha;
+            if (indate.indexOf('-') !== -1) {
+                sdate = indate.split('-');
+            } else {
+                sdate = indate.split('/');
+            }
+            var y4 = (Math.abs(sdate[2]));
+            var chkDate = new Date(Date.parse(sdate[1] + '/' + sdate[0] + '/' + sdate[2]));
+            var cmpDate = (chkDate.getMonth() + 1);
+            cmpDate += '/' + (chkDate.getDate());
+            cmpDate += '/' + (chkDate.getFullYear());
+            var indate2 = (Math.abs(sdate[1]));
+            indate2 += '/' + (Math.abs(sdate[0]));
+            indate2 += '/' + y4;
+            if (indate2 !== cmpDate) {
+                return false;
+            } else {
+                if (cmpDate === 'NaN/NaN/NaN') {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        },
 
         /**
          * Pregunta SI/NO
@@ -131,6 +163,7 @@ let Factory = (function () {
          */
         clear_errors: function () {
             $('input').removeClass('error');
+            $('select').removeClass('error');
             $('label.error').html('');
             $('label.error').css('display', 'none');
         },
@@ -146,6 +179,7 @@ let Factory = (function () {
             $('input[type="checkbox"]').each(function () {
                 $(this).prop('checked', false);
             });
+            $('select').val('');
         },
 
         /**
@@ -270,3 +304,13 @@ let JQ = (function () {
 })();
 
 
+/**
+ * Añadimos a la validación jquery la validación de una fecha
+ */
+jQuery.validator.addMethod(
+    "date_format",
+    function (value, element) {
+        return Factory.validate_is_date(value);
+    },
+    "Fecha incorrecta"
+);

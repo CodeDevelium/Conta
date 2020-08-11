@@ -1,7 +1,6 @@
 <?php
 /**
  * Convert.php
- *
  * @version     1.0
  * @author      Code Develium
  */
@@ -11,7 +10,6 @@ namespace App\Librerias;
 /**
  * Conversiones de formatos
  * Class Convert
- *
  * @package App\Librerias
  */
 abstract class Convert
@@ -97,12 +95,38 @@ abstract class Convert
      * @return string
      * @see validar_is_empty()
      */
-    function convert_to_html($txt)
+    public static function to_html($txt)
     {
         if (Validate::is_empty($txt)) {
             return '&nbsp;';
         }
 
         return nl2br(htmlspecialchars($txt));
+    }
+
+    /**
+     * Convierte una fecha dd/mm/yyyy a yyyy-mm-dd
+     *
+     * @param $date
+     *
+     * @return string
+     */
+    public static function to_date_mysql($date)
+    {
+        list($d, $m, $y) = explode('/', $date);
+        return "$y-$m-$d";
+    }
+
+    /**
+     * Convierte una fecha yyyy-mm-dd a dd/mm/yyyy
+     *
+     * @param $date
+     *
+     * @return string
+     */
+    public static function to_date_std($date)
+    {
+        list($y, $m, $d) = explode('-', $date);
+        return "$d/$m/$y";
     }
 }

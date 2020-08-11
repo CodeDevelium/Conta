@@ -33,4 +33,17 @@ class FactoriaEntidades
         return (new Banco($array_valores));
     }
 
+    /**
+     * Tarjeta
+     *
+     * @param array|null $array_valores
+     *
+     * @return Tarjeta
+     */
+    public function Tarjeta($array_valores = null)
+    {
+        return (new Tarjeta($array_valores));
+    }
+
+
 }

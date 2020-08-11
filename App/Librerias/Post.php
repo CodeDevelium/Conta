@@ -55,7 +55,9 @@ abstract class Post
     {
         /* Devuelve un string normal. El formato de fecha ha de ser comprobado desde afuera */
         /* ya que puede estar vacío */
-        return ''.filter_input(INPUT_POST, $clave);
+        $date = ''.filter_input(INPUT_POST, $clave);
+        // Devuelve formato Mysql
+        return Convert::to_date_mysql($date);
     }
 
     /**
