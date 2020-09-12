@@ -44,6 +44,12 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
         return $this;
     }
 
+    /**
+     * Texto para cuando no hay valor en el input
+     * @param $txt
+     *
+     * @return $this
+     */
     public function set_place_holder($txt)
     {
         $this->tags_html .= ' placeholder="'.$txt.'"';
@@ -102,8 +108,8 @@ class InputTextUIElement extends BaseUIElement implements IUIElement
         $error             = "Formato de fecha dd/mm/aaaa";
 
         $this->set_place_holder($formato_fecha);
-        $this->set_validacion_min_length(10, $error);
-        $this->set_max_length(10);
+        //$this->set_validacion_min_length(10, $error);
+        //$this->set_max_length(10);
         $this->set_place_holder($formato_fecha);
         $this->set_validacion_min_length(19, $error);
         $this->set_max_length(19);

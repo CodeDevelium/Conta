@@ -13,6 +13,7 @@ use App\Factory;
 use App\Librerias\Convert;
 use App\Librerias\Log;
 use Exception;
+use function Couchbase\fastlzCompress;
 
 /**
  * Class BancoRepositorio
@@ -37,13 +38,14 @@ class BancoRepositorio extends BaseRepositorio
     public function get_all()
     {
         try{
-            $Query = Factory::Sql()->Select(Banco::TABLA);
+            $sql = ' SELECT * FROM '.Banco::TABLA;
 
-            $Query->get_all();
+            $Query = Factory::Query();
 
-            $Query->execute();
+            $Query->execute($sql);
 
             return $Query->fetch_array_all();
+
         } catch (Exception $ex){
             Log::save_error('Imposible obtener listado de bancos');
             return [];
@@ -58,14 +60,16 @@ class BancoRepositorio extends BaseRepositorio
     public function get_array_activos()
     {
         try{
-            $Query = Factory::Sql()->Select(Banco::TABLA);
+            $sql = 'SELECT '.Banco::FIELD_ID.','.
+                             Banco::FIELD_NOMBRE.
+                    ' FROM '.Banco::TABLA.
+                   ' WHERE '.Banco::FIELD_ACTIVO.'= 1 '.
+                ' ORDER BY '.Banco::FIELD_NOMBRE;
 
-            $Query->get([Banco::FIELD_ID, Banco::FIELD_NOMBRE])
-                  ->where_equal(Banco::FIELD_ACTIVO, true)
-                  ->order_by(Banco::FIELD_NOMBRE);
+            $Query = Factory::Query();
 
             $array_ret = [];
-            for ($n = $Query->execute(); $n > 0; $n--) {
+            for ($n = $Query->execute($sql); $n > 0; $n--) {
 
                 list($id, $nombre) = $Query->fetch_num();
                 $array_ret[ $id ] = $nombre;
@@ -78,19 +82,7 @@ class BancoRepositorio extends BaseRepositorio
             return [];
         }
     }
-    /*
-        public function array_activos_action()
-        {
-            $RepoBancos   = Factory::Repositorios()->Banco();
-            $array_bancos = $RepoBancos->get_all_activos();
-            $array_ret    = [];
-            foreach ($array_bancos as $banco) {
-                $array_ret[ $array_bancos[ Banco::FIELD_ID ] ] = $array_bancos[ Banco::FIELD_NOMBRE ];
-            }
-            return $array_ret;
-        }
 
-    */
     /**
      * @param Banco $Banco
      *
@@ -100,12 +92,13 @@ class BancoRepositorio extends BaseRepositorio
     public function crear($Banco)
     {
         try{
-            $Query = Factory::Sql()->Insert(Banco::TABLA);
+            $sql = 'INSERT INTO '.Banco::TABLA.
+                          ' SET '.Banco::FIELD_NOMBRE.'= :nombre, '.
+                                  Banco::FIELD_ACTIVO.'='.$Banco->get_activo();
 
-            $Query->set([Banco::FIELD_NOMBRE => ':nombre',
-                         Banco::FIELD_ACTIVO => $Banco->get_activo()]);
+            $Query = Factory::Query();
 
-            return (1 == $Query->execute([':nombre' => $Banco->get_nombre()]));
+            return (1 == $Query->execute($sql, [':nombre' => $Banco->get_nombre()]));
 
         } catch (Exception $ex){
             Log::save_error('Imposible crear banco: '.$Banco->get_nombre());
@@ -122,13 +115,15 @@ class BancoRepositorio extends BaseRepositorio
     public function guardar_por_id($Banco)
     {
         try{
-            $Query = Factory::Sql()->Update(Banco::TABLA);
+            $sql =  'UPDATE '.Banco::TABLA.
+                    '   SET '.Banco::FIELD_NOMBRE.'= :nombre,'.
+                              Banco::FIELD_ACTIVO.'='.$Banco->get_activo().
+                    ' WHERE '.Banco::FIELD_ID.'='.$Banco->get_id();
 
-            $Query->set([Banco::FIELD_NOMBRE => ':nombre',
-                         Banco::FIELD_ACTIVO => $Banco->get_activo()])
-                  ->where_equal(Banco::FIELD_ID, $Banco->get_id());
+            $Query = Factory::Query();
 
-            $Query->execute([':nombre' => $Banco->get_nombre()]);
+            $Query->execute($sql, [':nombre' => $Banco->get_nombre()]);
+
             return true;
 
         } catch (Exception $ex){
@@ -146,11 +141,12 @@ class BancoRepositorio extends BaseRepositorio
     public function buscar_por_id($banco_id)
     {
         try{
-            $Query = Factory::Sql()->Select(Banco::TABLA);
-            $Query->get_all()
-                  ->where_equal(Banco::FIELD_ID, $banco_id);
+            $sql= 'SELECT * FROM '.Banco::TABLA.
+                         ' WHERE '.Banco::FIELD_ID.'='.$banco_id;
 
-            $Query->execute();
+            $Query = Factory::Query();
+
+            $Query->execute($sql);
 
             $array_datos = $Query->fetch_array();
             if (false === $array_datos) {
@@ -175,10 +171,11 @@ class BancoRepositorio extends BaseRepositorio
     public function eliminar_por_id($banco_id)
     {
         try{
-            $Query = Factory::Sql()->Delete(Banco::TABLA);
-            $Query->where_equal(Banco::FIELD_ID, $banco_id);
+            $sql = 'DELETE FROM '. Banco::TABLA .
+                       ' WHERE ' . Banco::FIELD_ID . '=' . $banco_id;
 
-            return (1 == $Query->execute());
+            $Query = Factory::Query();
+            return (1 == $Query->execute($sql));
 
         } catch (Exception $ex){
             Log::save_error('Imposible eliminar banco por id: '.$banco_id);

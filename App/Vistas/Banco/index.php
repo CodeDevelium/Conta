@@ -1,10 +1,8 @@
 <?php
 
 use App\Entidades\Banco;
-use App\Factory;
 use App\Librerias\Convert;
 
-$ui = Factory::UI();
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -22,10 +20,12 @@ $ui = Factory::UI();
             <div class="col-md-12 col-lg-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <?= $ui->Button_nuevo()
-                               ->set_primario()
-                               ->set_modal_abrir('#modal_nuevo_banco')
-                        ?>
+
+                        <a title="Crear un nuevo banco"
+                           class="btn btn-flat btn-primary"
+                           data-toggle="modal"
+                           data-target="#modal_nuevo_banco">Nuevo</a>
+
                         <div class="box-body">
 
                             <table class="table table-bordered table-striped dt-responsive grid">
@@ -48,44 +48,32 @@ $ui = Factory::UI();
                                     $id = $array_banco[ Banco::FIELD_ID ];
 
                                     $activado = Convert::to_bool($array_banco[ Banco::FIELD_ACTIVO ]);
-
                                     if ($activado) {
-                                        $btnActivado = $ui->Button_simple('Activado')
-                                                          ->set_color_verde()
-                                                          ->set_titulo('Banco activado')
-                                                          ->set_size_xs();
+                                        $btnEstado = '<a title="Banco activado" class="btn btn-flat btn-success btn-xs">Activado</a>';
                                     } else {
-                                        $btnActivado = $ui->Button_simple('Desactivado')
-                                                          ->set_size_xs()
-                                                          ->set_titulo('Banco desactivado')
-                                                          ->set_color_rojo();
+                                        $btnEstado = '<a title="Banco desactivado" class="btn btn-flat btn-danger btn-xs">Desactivado</a>';
                                     }
-                                    $btnEditar = $ui->Button_simple_link('')
-                                                    ->set_color_naranja()
-                                                    ->set_modal_abrir('#modal_editar_banco')
-                                                    ->set_icon('fa-pencil')
-                                                    ->set_titulo('Modificar')
-                                                    ->set_size_xs()
-                                                    ->set_class_name('btnEditarBanco')
-                                                    ->set_tag('data-id', $id);
-
-                                    $btnEliminar = $ui->Button_simple('')
-                                                      ->set_color_rojo()
-                                                      ->set_icon('fa-times')
-                                                      ->set_titulo('Eliminar')
-                                                      ->set_size_xs()
-                                                      ->set_class_name('btnEliminarBanco')
-                                                      ->set_tag('data-id', $id);
-
                                     ?>
                                     <tr>
-                                        <td><?= $array_banco[ Banco::FIELD_ID ] ?></td>
-                                        <td class='banco_"<?= $id ?>'><?= $array_banco[ Banco::FIELD_NOMBRE ] ?></td>
-                                        <td> <?= $btnActivado ?></td>
+                                        <td><?= $id ?></td>
+                                        <td class='banco_<?= $id ?>'><?= $array_banco[ Banco::FIELD_NOMBRE ] ?></td>
+                                        <td><?= $btnEstado ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <?= $btnEditar ?>
-                                                <?= $btnEliminar ?>
+                                                <a title="Modificar"
+                                                   href="#"
+                                                   data-id="<?= $id ?>"
+                                                   class="btn btn-flat btn-warning btn-xs btnEditarBanco"
+                                                   data-toggle="modal"
+                                                   data-target="#modal_editar_banco">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a title="Eliminar"
+                                                   href="#"
+                                                   data-id="<?= $id ?>"
+                                                   class="btn btn-flat btn-danger btn-xs btnEliminarBanco">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>

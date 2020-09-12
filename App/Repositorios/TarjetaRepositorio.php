@@ -38,12 +38,12 @@ class TarjetaRepositorio extends BaseRepositorio
     public function get_all()
     {
         try{
-            $Query = Factory::Sql()->Select(Tarjeta::TABLA);
 
-            $Query->get_all()
-                ->left_join( Banco::TABLA)->on_equal( Banco::FIELD_ID, Tarjeta::FIELD_BANCO_ID);
+            $sql = 'SELECT * FROM ' . Tarjeta::TABLA .
+                      ' LEFT JOIN ' . Banco::TABLA . ' ON ' .Banco::FIELD_ID . '=' . Tarjeta::FIELD_BANCO_ID;
 
-            $Query->execute();
+            $Query = Factory::Query();
+            $Query->execute($sql);
 
             return $Query->fetch_array_all();
         } catch (Exception $ex){
@@ -61,15 +61,18 @@ class TarjetaRepositorio extends BaseRepositorio
     public function crear($Tarjeta)
     {
         try{
-            $Query = Factory::Sql()->Insert(Tarjeta::TABLA);
+            $sql = 'INSERT INTO ' . Tarjeta::TABLA .
+                          ' SET ' . Tarjeta::FIELD_NOMBRE   .'= :nombre, ' .
+                                    Tarjeta::FIELD_BANCO_ID .'='. $Tarjeta->get_banco_id() . ', ' .
+                                    Tarjeta::FIELD_CADUCA   .'='. $Tarjeta->get_caduca() . ', '.
+                                    Tarjeta::FIELD_ACTIVA   .'='. $Tarjeta->get_activa();
 
-            $Query->set([Tarjeta::FIELD_NOMBRE   => ':nombre',
-                         Tarjeta::FIELD_BANCO_ID => $Tarjeta->get_banco_id(),
-                         Tarjeta::FIELD_CADUCA   => $Tarjeta->get_caduca(),
-                         Tarjeta::FIELD_ACTIVA   => $Tarjeta->get_activa()]);
+            $Query = Factory::Query();
 
-            $ok = (1 == $Query->execute([':nombre' => $Tarjeta->get_nombre()]));
+            $ok = (1 == $Query->execute($sql, [':nombre' => $Tarjeta->get_nombre()]));
+
             $Tarjeta->set_id( $Query->get_last_id());
+
             return $ok;
 
         } catch (Exception $ex){
@@ -87,15 +90,17 @@ class TarjetaRepositorio extends BaseRepositorio
     public function guardar_por_id($Tarjeta)
     {
         try{
-            $Query = Factory::Sql()->Update(Tarjeta::TABLA);
+            $sql = 'UPDATE ' . Tarjeta::TABLA .
+                     ' SET ' . Tarjeta::FIELD_NOMBRE   .'= :nombre, ' .
+                               Tarjeta::FIELD_BANCO_ID .'='. $Tarjeta->get_banco_id() . ', ' .
+                               Tarjeta::FIELD_CADUCA   .'="'. $Tarjeta->get_caduca() . '", '.
+                               Tarjeta::FIELD_ACTIVA   .'='. $Tarjeta->get_activa() .
+                   ' WHERE ' . Tarjeta::FIELD_ID .'='. $Tarjeta->get_id();
 
-            $Query->set([Tarjeta::FIELD_NOMBRE     => ':nombre',
-                         Tarjeta::FIELD_BANCO_ID => $Tarjeta->get_banco_id(),
-                         Tarjeta::FIELD_CADUCA   => $Tarjeta->get_caduca(),
-                         Tarjeta::FIELD_ACTIVA   => $Tarjeta->get_activa()])
-                  ->where_equal(Tarjeta::FIELD_ID, $Tarjeta->get_id());
+            $Query = Factory::Query();
 
-            $Query->execute([':nombre' => $Tarjeta->get_nombre()]);
+            $Query->execute( $sql, [':nombre' => $Tarjeta->get_nombre()]);
+
             return true;
 
         } catch (Exception $ex){
@@ -113,11 +118,12 @@ class TarjetaRepositorio extends BaseRepositorio
     public function buscar_por_id($tarjeta_id)
     {
         try{
-            $Query = Factory::Sql()->Select(Tarjeta::TABLA);
-            $Query->get_all()
-                  ->where_equal(Tarjeta::FIELD_ID, $tarjeta_id);
+            $sql = 'SELECT * FROM ' . Tarjeta::TABLA .
+                          ' WHERE ' . Tarjeta::FIELD_ID .'='. $tarjeta_id;
 
-            $Query->execute();
+            $Query = Factory::Query();
+
+            $Query->execute($sql);
 
             $array_datos = $Query->fetch_array();
             if (false === $array_datos) {
@@ -142,10 +148,11 @@ class TarjetaRepositorio extends BaseRepositorio
     public function eliminar_por_id($tarjeta_id)
     {
         try{
-            $Query = Factory::Sql()->Delete(Tarjeta::TABLA);
-            $Query->where_equal(Tarjeta::FIELD_ID, $tarjeta_id);
+            $sql = 'DELETE FROM ' . Tarjeta::TABLA .
+                        ' WHERE ' . Tarjeta::FIELD_ID . '='. $tarjeta_id;
 
-            return (1 == $Query->execute());
+            $Query = Factory::Query();
+            return (1 == $Query->execute($sql));
 
         } catch (Exception $ex){
             Log::save_error('Imposible eliminar tarjeta por id: '.$tarjeta_id);

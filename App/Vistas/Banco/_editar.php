@@ -8,21 +8,22 @@
  */
 
 use App\Entidades\Banco;
-use App\Factory;
-
-$ui = Factory::UI();
 
 ?>
-<div id="modal_editar_banco" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
+<div id="modal_editar_banco" class="modal modal-editar" role="dialog" data-backdrop="static" data-keyboard="false">
 
     <div class="modal-dialog">
 
         <div class="modal-content">
-
-            <form role="form" method="post" action="<?= Banco::ACTION_GUARDAR ?>" enctype="multipart/form-data">
-                <?= $ui->Input_hidden(1)->set_id_name('banco_id_editar') ?>
-                <div class="modal-header" style="background:#3c8dbc; color:white">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <form role="form"
+                  method="post"
+                  action="<?= Banco::ACTION_GUARDAR ?>"
+                  enctype="multipart/form-data">
+                <input type="hidden"
+                       value=""
+                       name="<?= Banco::FIELD_ID ?>">
+                <div class="modal-header app-modal-header">
+                    <button type="button" class="close app-modal-botton-close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Modiciar banco</h4>
                 </div>
 
@@ -30,43 +31,56 @@ $ui = Factory::UI();
                     <div class="box-body">
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Nombre del banco') ?>
+                                <label class="app-control-label" for="banco_nombre_editar">Nombre del banco</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_text(null)
-                                       ->set_auto_focus()
-                                       ->set_id_name('banco_nombre_editar')
-                                       ->set_tab_index(1)
-                                       ->set_max_length(Banco::LEN_NOMBRE)
-                                       ->set_titulo('Nombre del banco')
-                                       ->set_validacion_obligatorio() ?>
+                                <input type="text"
+                                       value=""
+                                       title="Nombre del banco"
+                                       id="banco_nombre_editar"
+                                       name="<?= Banco::FIELD_NOMBRE ?>"
+                                       class="form-control app-control-input-text"
+                                       tabindex="1"
+                                       maxlength="<?= Banco::LEN_NOMBRE ?>"
+                                       data-rule-maxlength="<?= Banco::LEN_NOMBRE ?>"
+                                       data-msg-maxlength="Máximo <?= Banco::LEN_NOMBRE ?> caracteres"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Estado') ?>
+                                <label class="app-control-label">Estado</label>
                             </div>
                             <div class="col-md-12">
-
-                                <?= $ui->Radio_button('1', 'Activo')
-                                       ->set_id('banco_activo_si')
-                                       ->set_name('banco_activo_editar')
-                                       ->set_tab_index(2)
-                                       ->set_titulo('El banco esta activo')
-                                       ->set_validacion_obligatorio() ?>
-                                <?= $ui->Radio_button('0', 'No activo')
-                                       ->set_id('banco_activo_no')
-                                       ->set_name('banco_activo_editar')
-                                       ->set_tab_index(3)
-                                       ->set_titulo('El banco esta desactivado')
-                                ?>
-                                <div><?= $ui->Label_error('banco_activo_editar') ?></div>
+                                <input type="radio"
+                                       value="1"
+                                       id="banco_activo_si"
+                                       name="<?= Banco::FIELD_ACTIVO ?>"
+                                       title="El banco esta activo"
+                                       tabindex="2"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio"> Activo
+                                &nbsp;
+                                <input type="radio"
+                                       value="0"
+                                       id="banco_activo_no"
+                                       name="<?= Banco::FIELD_ACTIVO ?>"
+                                       title="El banco esta desactivado"
+                                       tabindex="3"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio"> No activo
+                                <div>
+                                    <label id="banco_activo_editar-error" class="error" for="banco_activo_editar"></label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                        <button type="button"
+                                class="btn btn-flat btn-default"
+                                title="Cancelar datos"
+                                data-dismiss="modal">Cancelar</button>&nbsp;
+                        <button type="submit"
+                                title="Guardar datos"
+                                class="btn btn-flat btn-primary">Guardar</button>&nbsp;
                     </div>
                 </div>
             </form>

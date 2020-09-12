@@ -240,6 +240,7 @@ let Factory = (function () {
 
 
 // Identificador presente y único
+/* 1 y solo 1 */
 function j(id) {
     let jj = $(id);
     if (0 === jj.length) {
@@ -248,6 +249,24 @@ function j(id) {
     }
     if (jj.length > 1) {
         alert("ID (" + id + ") repetido");
+        return null;
+    }
+    return jj;
+}
+/* 1 o nuinguno */
+function j0(id) {
+    let jj = $(id);
+    if (jj.length > 1) {
+        alert("ID (" + id + ") repetido");
+        return null;
+    }
+    return jj;
+}
+/* Muchos */
+function jm(id) {
+    let jj = $(id);
+    if (0 === jj.length) {
+        alert("ID(" + id + ") no encontrado");
         return null;
     }
     return jj;

@@ -1,0 +1,2 @@
+>>> 12:11:03 ERR: Imposible crear banco: 212312313
+>>> 12:11:30 ERR: Imposible crear banco: 1231313

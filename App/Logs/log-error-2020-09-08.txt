@@ -1,0 +1,5 @@
+>>> 09:15:08 ERR: Imposible crear banco: 1231313
+>>> 09:15:45 ERR: Imposible crear banco: 111111111
+>>> 09:16:31 ERR: Imposible crear banco: 1111111111
+>>> 09:27:32 ERR: Imposible obtener listado de tarjetas
+>>> 09:31:41 ERR: Imposible crear tarjeta: 23233

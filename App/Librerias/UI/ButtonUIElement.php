@@ -9,7 +9,7 @@
 
 namespace App\Librerias\UI;
 
-use App\Librerias\Encriptador;
+//use App\Librerias\Encriptador;
 
 /**
  * Class ButtonUIElement

@@ -2,28 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1819437-d1bc-4a9b-8e0f-e811eb91db64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/App/Controladores/TarjetaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/Entidades/Tarjeta.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/Repositorios/TarjetaRepositorio.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/Vistas/Tarjeta/_editar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/Vistas/Tarjeta/_nuevo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/Vistas/Tarjeta/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html_public/scripts/Tarjeta/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Controladores/BancoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Controladores/BancoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Entidades/Banco.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Entidades/Banco.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Entidades/FactoriaEntidades.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Entidades/FactoriaEntidades.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Librerias/Convert.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/Convert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Librerias/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Librerias/UI/ComboUIElement.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/UI/ComboUIElement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Factory.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Factory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/BaseSql.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/Database/Query.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/BaseWhere.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/FactoriaSql.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/Sql.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/SqlAdmin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/SqlDelete.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/SqlInsert.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/SqlSelect.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/Database/Sql/SqlUpdate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/UI/ButtonLinkUIElement.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/UI/ButtonLinkUIElement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Librerias/UI/ButtonUIElement.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/UI/ButtonUIElement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Librerias/UI/InputTextUIElement.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Librerias/UI/InputTextUIElement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Repositorios/BancoRepositorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Repositorios/BancoRepositorio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Repositorios/FactoriaRepositorios.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Repositorios/FactoriaRepositorios.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Repositorios/HomeRepositorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Repositorios/HomeRepositorio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Repositorios/TarjetaRepositorio.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Repositorios/TarjetaRepositorio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Vistas/Banco/_editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Vistas/Banco/_editar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Vistas/Banco/_nuevo.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Vistas/Banco/_nuevo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Vistas/Banco/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Vistas/Banco/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Vistas/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Vistas/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html_public/scripts/Banco/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/html_public/scripts/Banco/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html_public/scripts/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/html_public/scripts/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html_public/scripts/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/html_public/scripts/app.js" afterDir="false" />
     </list>
@@ -80,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/html_public/scripts/Tarjeta" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/App/Librerias/Database/Sql" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -88,15 +88,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\www\Conta\App\Librerias\Database" />
       <recent name="Z:\www\Conta\App\Controladores" />
       <recent name="Z:\www\Conta\App\Entidades" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\www\Conta\App\Librerias\Database\Sql" />
       <recent name="Z:\www\Conta\html_public\scripts\Tarjeta" />
       <recent name="Z:\www\Conta\App\Vistas\Tarjeta" />
       <recent name="Z:\www\Conta\App\Repositorios" />
       <recent name="Z:\www\Conta\App\Controladores" />
-      <recent name="Z:\www\Conta\App\Librerias\UI" />
     </key>
   </component>
   <component name="RunManager">
@@ -141,7 +142,13 @@
       <workItem from="1596219024728" duration="3412000" />
       <workItem from="1596578453137" duration="598000" />
       <workItem from="1597010152476" duration="1165000" />
-      <workItem from="1597170469382" duration="383000" />
+      <workItem from="1597170469382" duration="446000" />
+      <workItem from="1597173261139" duration="66000" />
+      <workItem from="1599410672509" duration="10699000" />
+      <workItem from="1599513704568" duration="2964000" />
+      <workItem from="1599590014014" duration="3380000" />
+      <workItem from="1599844778829" duration="42000" />
+      <workItem from="1599928963998" duration="1187000" />
     </task>
     <task id="LOCAL-00001" summary="Primer commit">
       <created>1593970609854</created>
@@ -164,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594478179485</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Bancos ok 2">
+      <created>1597170888689</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597170888689</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +187,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primer commit" />
     <MESSAGE value="Bancos ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bancos ok" />
+    <MESSAGE value="Bancos ok 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bancos ok 2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="88" key="#Servers" timestamp="1593971984184">
@@ -192,18 +207,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="287" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1594477095111" />
-    <state x="627" y="213" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593974529256">
+    <state x="627" y="213" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599516103312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="627" y="213" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1593974529256" />
+    <state x="627" y="213" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599516103312" />
     <state x="608" y="299" width="703" height="505" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1593972020028">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="608" y="299" width="703" height="505" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1593972020028" />
-    <state x="508" y="40" key="CommitChangelistDialog2" timestamp="1594478177467">
+    <state x="508" y="40" key="CommitChangelistDialog2" timestamp="1597170886196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="508" y="40" key="CommitChangelistDialog2/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1594478177467" />
+    <state x="508" y="40" key="CommitChangelistDialog2/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1597170886196" />
     <state x="689" y="195" key="FileChooserDialogImpl" timestamp="1593972817469">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -212,54 +227,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="817" y="385" width="310" height="269" key="Github.ShareDialog/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1594478215683" />
-    <state width="1865" height="331" key="GridCell.Tab.0.bottom" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.0.bottom" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.0.center" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.0.center" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.0.left" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.0.left" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.0.right" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.0.right" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.1.bottom" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.1.bottom" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.1.center" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.1.center" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.1.center/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.1.left" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.1.center/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.1.left" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.1.left/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.1.right" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.1.left/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.1.right" timestamp="1599844820868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.1.right/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.2.bottom" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.1.right/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820868" />
+    <state width="1880" height="211" key="GridCell.Tab.2.bottom" timestamp="1599844820869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.2.center" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820869" />
+    <state width="1880" height="211" key="GridCell.Tab.2.center" timestamp="1599844820869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.2.center/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.2.left" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.2.center/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820869" />
+    <state width="1880" height="211" key="GridCell.Tab.2.left" timestamp="1599844820869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.2.left/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
-    <state width="1865" height="331" key="GridCell.Tab.2.right" timestamp="1595188792127">
+    <state width="1880" height="211" key="GridCell.Tab.2.left/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820869" />
+    <state width="1880" height="211" key="GridCell.Tab.2.right" timestamp="1599844820869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="331" key="GridCell.Tab.2.right/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1595188792127" />
+    <state width="1880" height="211" key="GridCell.Tab.2.right/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599844820869" />
     <state x="752" y="289" key="NewPhpClassDialog" timestamp="1593983755498">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -268,14 +283,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="772" y="423" key="NewPhpFileDialog/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1594478675753" />
-    <state x="352" y="72" key="SettingsEditor" timestamp="1594480916896">
+    <state x="352" y="72" width="1215" height="883" key="SettingsEditor" timestamp="1599417968598">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="352" y="72" key="SettingsEditor/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1594480916896" />
-    <state x="452" y="183" key="Vcs.Push.Dialog.v2" timestamp="1594478256627">
+    <state x="352" y="72" width="1215" height="883" key="SettingsEditor/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1599417968598" />
+    <state x="452" y="183" key="Vcs.Push.Dialog.v2" timestamp="1597170913790">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1594478256627" />
+    <state x="452" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-3.1920.1040@0.0.1920.1040" timestamp="1597170913790" />
     <state x="594" y="189" width="731" height="662" key="find.popup" timestamp="1594322108749">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

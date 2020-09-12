@@ -1,12 +1,14 @@
-label.error{
-    color:red;
+label.error {
+    color: red;
     font-weight: normal;
 }
-input.error{
+
+input.error {
     background-color: #fff0f4;
     border: 1px solid red;
 }
-select.error{
+
+select.error {
     background-color: #fff0f4;
     border: 1px solid red;
 }
@@ -14,9 +16,31 @@ select.error{
 .swal2-popup {
     font-size: 1.4rem !important;
 }
-body{
+
+body {
     font-size: 1.6em;
 }
-.loading{
+
+.loading {
     width: 80px;
+}
+
+/* Label */
+.app-control-label {
+    word-wrap: break-word;
+}
+
+/* INput text */
+.app-control-input-text {
+
+}
+
+/* Modal */
+.app-modal-header {
+    background: #3c8dbc;
+    color: white;
+}
+.app-modal-botton-close {
+    color: white;
+    opacity: 1;
 }

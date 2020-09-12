@@ -10,7 +10,7 @@ namespace App;
 
 
 use App\Entidades\FactoriaEntidades;
-use App\Librerias\Database\Sql\FactoriaSql;
+use App\Librerias\Database\Query;
 use App\Librerias\UI\FactoriaUI;
 use App\Repositorios\FactoriaRepositorios;
 
@@ -57,13 +57,16 @@ abstract class Factory
         return new SessionAdmin($session_id);
     }
 
+
     /**
-     * Form
-     * @return FactoriaSql
+     * @return Query
+     * @throws \Exception
      */
-    public static function Sql(){
-        return new FactoriaSql();
+    public static function Query()
+    {
+        return new Query();
     }
+
 
     /**
      * Form

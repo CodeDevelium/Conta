@@ -9,7 +9,7 @@
 
 namespace App\Librerias\UI;
 
-use App\Librerias\Encriptador;
+//use App\Librerias\Encriptador;
 
 /**
  * Class ButtonLinkUIElement
@@ -87,7 +87,8 @@ class ButtonLinkUIElement extends BaseUIElement implements IUIElement
             if ($parametro[ 0 ] != '/') {
                 $url .= '/';
             }
-            $parametro = Encriptador::get_valor_encriptado($parametro);
+            alert("Pendiente");
+            //$parametro = Encriptador::get_valor_encriptado($parametro);
             $url       .= $parametro;
         }
         if (!empty($token)) {

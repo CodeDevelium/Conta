@@ -16,6 +16,7 @@ class HomeRepositorio extends BaseRepositorio
 {
     /**
      * HomeRepositorio constructor.
+     * @throws \Exception
      */
     public function __construct()
     {

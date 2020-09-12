@@ -82,9 +82,9 @@ class BancoController extends BaseController
      */
     public function guardar_action()
     {
-        $banco_id     = Post::get_int('banco_id_editar');
-        $banco_nombre = Post::get_str('banco_nombre_editar');
-        $banco_activo = Post::get_bool('banco_activo_editar');
+        $banco_id     = Post::get_int( Banco::FIELD_ID);
+        $banco_nombre = Post::get_str( Banco::FIELD_NOMBRE);
+        $banco_activo = Post::get_bool( banco::FIELD_ACTIVO);
 
         $Banco = Factory::Entidades()->Banco();
 
@@ -117,6 +117,7 @@ class BancoController extends BaseController
     /**
      * Elimina un banco
      * JSON
+     * @throws Exception
      */
     public function eliminar_action()
     {
