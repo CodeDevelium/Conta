@@ -1,0 +1,1 @@
+>>> 06:01:33 ERR: Imposible actualizar tarjeta: 4

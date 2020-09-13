@@ -11,7 +11,6 @@ use App\Librerias\Convert;
 $array_tarjeta = $datos[ 'tarjeta' ];
 $array_bancos  = $datos[ 'bancos' ];
 
-$ui = Factory::UI();
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -29,10 +28,10 @@ $ui = Factory::UI();
             <div class="col-md-12 col-lg-8">
                 <div class="box">
                     <div class="box-header with-border">
-                        <?= $ui->Button_nuevo()
-                               ->set_primario()
-                               ->set_modal_abrir('#modal_nueva_tarjeta')
-                        ?>
+                        <a title="Nueva tarjeta"
+                           class="btn btn-flat btn-primary"
+                           data-toggle="modal"
+                           data-target="#modal_nueva_tarjeta">Nuevo</a>
                         <div class="box-body">
 
                             <table class="table table-bordered table-striped dt-responsive grid">
@@ -57,34 +56,11 @@ $ui = Factory::UI();
                                     $id = $tarjeta[ Tarjeta::FIELD_ID ];
 
                                     $activada = Convert::to_bool($tarjeta[ Tarjeta::FIELD_ACTIVA ]);
-
                                     if ($activada) {
-                                        $btnActivada = $ui->Button_simple('Activada')
-                                                          ->set_color_verde()
-                                                          ->set_titulo('Tarjeta activda')
-                                                          ->set_size_xs();
+                                        $btnEstado = '<a title="Tajeta activada" class="btn btn-flat btn-success btn-xs">Activada</a>';
                                     } else {
-                                        $btnActivada = $ui->Button_simple('Desactivada')
-                                                          ->set_size_xs()
-                                                          ->set_titulo('Tarjeta desactivada')
-                                                          ->set_color_rojo();
+                                        $btnEstado = '<a title="Tarjeta desactivado" class="btn btn-flat btn-danger btn-xs">Desactivada</a>';
                                     }
-                                    $btnEditar = $ui->Button_simple_link('')
-                                                    ->set_color_naranja()
-                                                    ->set_modal_abrir('#modal_editar_tarjeta')
-                                                    ->set_icon('fa-pencil')
-                                                    ->set_titulo('Modificar')
-                                                    ->set_size_xs()
-                                                    ->set_class_name('btnEditarTarjeta')
-                                                    ->set_tag('data-id', $id);
-
-                                    $btnEliminar = $ui->Button_simple('')
-                                                      ->set_color_rojo()
-                                                      ->set_icon('fa-times')
-                                                      ->set_titulo('Eliminar')
-                                                      ->set_size_xs()
-                                                      ->set_class_name('btnEliminarTarjeta')
-                                                      ->set_tag('data-id', $id);
 
                                     ?>
                                     <tr>
@@ -92,11 +68,23 @@ $ui = Factory::UI();
                                         <td class='tarjeta_<?= $id ?>'><?= $tarjeta[ Tarjeta::FIELD_NOMBRE ] ?></td>
                                         <td><?= $tarjeta[ Banco::FIELD_NOMBRE ] ?></td>
                                         <td><?= Convert::to_date_std($tarjeta[ Tarjeta::FIELD_CADUCA ]) ?></td>
-                                        <td> <?= $btnActivada ?></td>
+                                        <td> <?= $btnEstado ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <?= $btnEditar ?>
-                                                <?= $btnEliminar ?>
+                                                <a title="Modificar"
+                                                   href="#"
+                                                   data-id="<?= $id ?>"
+                                                   class="btn btn-flat btn-warning btn-xs btnEditarTarjeta"
+                                                   data-toggle="modal"
+                                                   data-target="#modal_editar_tarjeta">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a title="Eliminar"
+                                                   href="#"
+                                                   data-id="<?= $id ?>"
+                                                   class="btn btn-flat btn-danger btn-xs btnEliminarTarjeta">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>

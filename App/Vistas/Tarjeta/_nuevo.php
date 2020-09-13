@@ -21,8 +21,8 @@ $ui = Factory::UI();
 
             <form role="form" method="post" action="<?= Tarjeta::ACTION_CREAR ?>" enctype="multipart/form-data">
 
-                <div class="modal-header" style="background:#3c8dbc; color:white">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-header app-modal-header">
+                    <button type="button" class="close app-modal-botton-close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Nueva tarjeta de crédito</h4>
                 </div>
 
@@ -30,60 +30,74 @@ $ui = Factory::UI();
                     <div class="box-body">
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Nombre para la tarjeta') ?>
+                                <label class="app-control-label" for="tarjeta_nombre_nuevo">Nombre de la tarjeta</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_text(null)
-                                       ->set_auto_focus()
-                                       ->set_id_name('tarjeta_nombre_nuevo')
-                                       ->set_tab_index(1)
-                                       ->set_max_length(Tarjeta::LEN_NOMBRE)
-                                       ->set_titulo('Nombre de la tarjeta')
-                                       ->set_validacion_obligatorio() ?>
+                                <input type="text"
+                                       value=""
+                                       id="tarjeta_nombre_nuevo"
+                                       name="tarjeta_nombre_nuevo"
+                                       tabindex="1"
+                                       maxlength="<?= Tarjeta::LEN_NOMBRE ?>"
+                                       data-rule-maxlength="<?= Tarjeta::LEN_NOMBRE ?>"
+                                       data-msg-maxlength="Máximo <?= Tarjeta::LEN_NOMBRE ?> caracteres"
+                                       title="Nombre de la tarjeta"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio"
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Banco') ?>
+                                <label class="app-control-label" for="tarjeta_banco_id_nuevo">Banco</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_combo(null)
-                                       ->set_titulo('Banco al que pertenece la tarjeta')
-                                       ->set_id_name('tarjeta_banco_id_nuevo')
-                                       ->set_tab_index(2)
-                                       ->set_validacion_bligatorio()
-                                       ->set_array_opciones($array_bancos, true)
-                                ?>
+                                <select id="tarjeta_banco_id_nuevo"
+                                        name="tarjeta_banco_id_nuevo"
+                                        tabindex="2"
+                                        title="Banco al que pertenece la tarjeta"
+                                        data-rule-required="true" data-msg-required="Valor obligatorio"
+                                        class="form-control">
+                                    <option selected value=""></option>
+                                    <?php
+                                    foreach ($array_bancos as $key => $value){
+                                        echo "<option value='{$key}'>{$value}</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Fecha de caducidad') ?>
+                                <label class="app-control-label" for="tarjeta_caducidad_nuevo">Fecha de caducidad</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_text(null)
-                                       ->set_is_date()
-                                       ->set_id_name('tarjeta_caducidad_nuevo')
-                                       ->set_tab_index(3)
-                                       ->set_titulo('Fecha de caducidad de la tarjeta')
-                                       ->set_validacion_obligatorio()
-                                ?>
+                             <input type="text"
+                                    value=""
+                                    id="tarjeta_caducidad_nuevo"
+                                    name="tarjeta_caducidad_nuevo"
+                                    tabindex="3"
+                                    placeholder="dd/mm/aaaa"
+                                    maxlength="10" data-rule-maxlength="10"  data-msg-maxlength="Máximo 10 caracteres"
+                                    app-formato-fecha="true" data-msg-app-formato-fecha="Fecha incorrecta"
+                                    data-rule-pattern="\d{2}/\d{2}/\d{4}" data-msg-pattern="Formato de fecha dd/mm/aaaa"
+                                    title="Fecha de caducidad de la tarjeta"
+                                    data-rule-required="true" data-msg-required="Valor obligatorio"
+                                    class="form-control">
                             </div>
                         </div>
-
-
                     </div>
-
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                        <button type="button"
+                                title="Cancelar datos actuales"
+                                class="btn btn-default btn-flat"
+                                data-dismiss="modal">Cancelar</button>
+                        <button type="submit"
+                                title="Guardar datos"
+                                class="btn btn-flat btn-primary">Guardar</button>&nbsp;
                     </div>
                 </div>
             </form>
-
         </div>
-
     </div>
-
 </div>
 

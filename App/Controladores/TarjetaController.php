@@ -162,8 +162,6 @@ class TarjetaController extends BaseController
 
         $array_tarjetas = $RepoTarjetas->buscar_por_id($tarjeta_id);
 
-        $array_tarjetas[ Tarjeta::FIELD_CADUCA ] = Convert::to_date_std($array_tarjetas[ Tarjeta::FIELD_CADUCA ]);
-
         if (Validate::is_empty($array_tarjetas)) {
             echo $this->json_error('Imposible buscar tarjetas: '.$tarjeta_id);
         } else {

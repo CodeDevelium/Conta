@@ -130,6 +130,8 @@ class TarjetaRepositorio extends BaseRepositorio
                 return null;
             }
             $array_datos[ Tarjeta::FIELD_ACTIVA ] = Convert::to_bool($array_datos[ Tarjeta::FIELD_ACTIVA ]);
+            $array_datos[ Tarjeta::FIELD_NOMBRE ] = Convert::to_decode($array_datos[ Tarjeta::FIELD_NOMBRE]);
+            $array_datos[ Tarjeta::FIELD_CADUCA ] = Convert::to_date_std($array_datos[ Tarjeta::FIELD_CADUCA ]);
             return $array_datos;
 
         } catch (Exception $ex){

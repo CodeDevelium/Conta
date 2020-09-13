@@ -105,6 +105,17 @@ abstract class Convert
     }
 
     /**
+     * Decodifica los caracteres especiales a html
+     * &quot; => "
+     * @param $txt
+     *
+     * @return string
+     */
+    public static function to_decode($txt){
+        return html_entity_decode($txt);
+    }
+
+    /**
      * Convierte una fecha dd/mm/yyyy a yyyy-mm-dd
      *
      * @param $date

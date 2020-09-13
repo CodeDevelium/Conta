@@ -10,8 +10,6 @@
 use App\Entidades\Tarjeta;
 use App\Factory;
 
-$ui = Factory::UI();
-
 ?>
 <div id="modal_editar_tarjeta" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
 
@@ -20,9 +18,12 @@ $ui = Factory::UI();
         <div class="modal-content">
 
             <form role="form" method="post" action="<?= Tarjeta::ACTION_GUARDAR ?>" enctype="multipart/form-data">
-                <?= $ui->Input_hidden(1)->set_id_name('tarjeta_id_editar') ?>
-                <div class="modal-header" style="background:#3c8dbc; color:white">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <input type="hidden"
+                       value="1"
+                       id="tarjeta_id_editar"
+                       name="tarjeta_id_editar">
+                <div class="modal-header app-modal-header">
+                    <button type="button" class="close app-modal-botton-close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Modificar tarjeta de crédito</h4>
                 </div>
 
@@ -30,74 +31,96 @@ $ui = Factory::UI();
                     <div class="box-body">
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Nombre para la tarjeta') ?>
+                                <label class="app-control-label" for="tarjeta_nombre_editar">Nombre para la tarjeta</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_text(null)
-                                       ->set_auto_focus()
-                                       ->set_id_name('tarjeta_nombre_editar')
-                                       ->set_tab_index(1)
-                                       ->set_max_length(Tarjeta::LEN_NOMBRE)
-                                       ->set_titulo('Nombre de la tarjeta')
-                                       ->set_validacion_obligatorio() ?>
+                                <input type="text"
+                                       value=""
+                                       id="tarjeta_nombre_editar"
+                                       name="tarjeta_nombre_editar"
+                                       tabindex="1"
+                                       maxlength="<?= Tarjeta::LEN_NOMBRE ?>"
+                                       data-rule-maxlength="<?= Tarjeta::LEN_NOMBRE ?>"
+                                       data-msg-maxlength="Máximo <?= Tarjeta::LEN_NOMBRE ?> caracteres"
+                                       title="Nombre de la tarjeta"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio"
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Banco') ?>
+                                <label class="app-control-label" for="tarjeta_banco_id_editar">Banco</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_combo(null)
-                                       ->set_titulo('Banco al que pertenece la tarjeta')
-                                       ->set_id_name('tarjeta_banco_id_editar')
-                                       ->set_tab_index(2)
-                                       ->set_validacion_bligatorio()
-                                       ->set_array_opciones($array_bancos, false)
-                                ?>
+                                <select id="tarjeta_banco_id_editar"
+                                        name="tarjeta_banco_id_editar"
+                                        tabindex="2"
+                                        title="Banco al que pertenece la tarjeta"
+                                        data-rule-required="true" data-msg-required="Valor obligatorio"
+                                        class="form-control">
+                                    <?php
+                                    foreach ($array_bancos as $key => $value){
+                                        echo "<option value='{$key}'>{$value}</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Fecha de caducidad') ?>
+                                <label class="app-control-label" for="tarjeta_caducidad_editar">Fecha de caducidad</label>
                             </div>
                             <div class="col-md-12">
-                                <?= $ui->Input_text(null)
-                                       ->set_is_date()
-                                       ->set_id_name('tarjeta_caducidad_editar')
-                                       ->set_tab_index(3)
-                                       ->set_titulo('Fecha de caducidad de la tarjeta')
-                                       ->set_validacion_obligatorio()
-                                ?>
+                                <input type="text"
+                                       value=""
+                                       id="tarjeta_caducidad_editar"
+                                       name="tarjeta_caducidad_editar"
+                                       tabindex="3"
+                                       placeholder="dd/mm/aaaa"
+                                       title="Fecha de caducidad de la tarjeta"
+                                       maxlength="10" data-rule-maxlength="10"  data-msg-maxlength="Máximo 10 caracteres"
+                                       app-formato-fecha="true" data-msg-app-formato-fecha="Fecha incorrecta"
+                                       data-rule-pattern="\d{2}/\d{2}/\d{4}" data-msg-pattern="Formato de fecha dd/mm/aaaa"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio"
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <?= $ui->Label('Estado') ?>
+                                <label class="app-control-label">Estado</label>
                             </div>
                             <div class="col-md-12">
 
-                                <?= $ui->Radio_button('1', 'Activa')
-                                       ->set_id('tarjeta_activa_si')
-                                       ->set_name('tarjeta_activa_editar')
-                                       ->set_tab_index(2)
-                                       ->set_titulo('La tarjeta esta activa')
-                                       ->set_validacion_obligatorio() ?>
-                                <?= $ui->Radio_button('0', 'No activa')
-                                       ->set_id('tarjeta_activa_no')
-                                       ->set_name('tarjeta_activa_editar')
-                                       ->set_tab_index(3)
-                                       ->set_titulo('La tarjeta esta desactivado')
-                                ?>
-                                <div><?= $ui->Label_error('tarjeta_activa_editar') ?></div>
+                                <input type="radio"
+                                       value="1"
+                                       id="tarjeta_activa_si"
+                                       name="tarjeta_activa_editar"
+                                       tabindex="2"
+                                       title="La tarjeta esta activa"
+                                       data-rule-required="true" data-msg-required="Valor obligatorio">&nbsp;Activa&nbsp;
+                                <input type="radio"
+                                       value="0"
+                                       id="tarjeta_activa_no"
+                                       name="tarjeta_activa_editar"
+                                       tabindex="2"
+                                       title="La tarjeta esta desactiva">&nbsp;No Activa&nbsp;
+                                <div>
+                                    <label id="tarjeta_activa_editar-error"
+                                           class="error"
+                                           for="tarjeta_activa_editar"
+                                           style="display: none;"></label>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                        <button type="button"
+                                class="btn btn-default btn-flat"
+                                data-dismiss="modal">Cancelar</button>
+                        <button type="submit"
+                                title="Guardar datos"
+                                class="btn btn-flat btn-primary">Guardar</button>&nbsp;
                     </div>
                 </div>
             </form>

@@ -327,7 +327,7 @@ let JQ = (function () {
  * Añadimos a la validación jquery la validación de una fecha
  */
 jQuery.validator.addMethod(
-    "date_format",
+    "app-formato-fecha",
     function (value, element) {
         return Factory.validate_is_date(value);
     },
